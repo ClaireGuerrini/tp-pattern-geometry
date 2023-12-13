@@ -9,22 +9,29 @@ public class CoordinateTest {
 
 	@Test
 	public void testConstructorXY(){
-		// TODO
-		Coordinate c1 = new Coordinate(3.0,4.0);
-		Assert.assertEquals(3.0, c1.getX(), EPSILON);
-		Assert.assertEquals(4.0, c1.getY(), EPSILON);
-		Assert.assertFalse(c1.isEmpty());
-		Assert.assertEquals("[3.0,4.0]", c1.toString());
+
+		Coordinate c = new Coordinate(3.0,4.0);
+		Assert.assertEquals(3.0, c.getX(), EPSILON);
+		Assert.assertEquals(4.0, c.getY(), EPSILON);
+		Assert.assertFalse(c.isEmpty());
+		Assert.assertEquals("[3.0,4.0]", c.toString());
 		
-		Coordinate c2 = new Coordinate();
+	}
+	
+	@Test
+	public void testDefaultConstructor(){
+		Coordinate c = new Coordinate();
+		Assert.assertTrue(c.isEmpty());
+		Assert.assertEquals("[NaN,NaN]", c.toString());
+	}
+	
+	@Test
+	public void testHalfEmpty(){
+		Coordinate c1 = new Coordinate(Double.NaN,4.0);
+		Assert.assertTrue(c1.isEmpty());
+		
+		Coordinate c2 = new Coordinate(3.0,Double.NaN);
 		Assert.assertTrue(c2.isEmpty());
-		Assert.assertEquals("[NaN,NaN]", c2.toString());
-		
-		Coordinate c3 = new Coordinate(Double.NaN,4.0);
-		Assert.assertTrue(c3.isEmpty());
-		
-		Coordinate c4 = new Coordinate(3.0,Double.NaN);
-		Assert.assertTrue(c4.isEmpty());
 	}
 
 }
