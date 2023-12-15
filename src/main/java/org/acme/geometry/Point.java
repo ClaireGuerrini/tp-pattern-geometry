@@ -23,6 +23,14 @@ public class Point implements Geometry {
 	public boolean isEmpty() {
 		return this.coordinate.isEmpty();
 	}
+	
+	@Override
+	public void translate(double dx, double dy) {
+		double newX = this.coordinate.getX() + dx;
+		double newY = this.coordinate.getY() + dy;
+		
+		this.coordinate = new Coordinate(newX, newY);
+	}
 
 	public Coordinate getCoordinate() {
 		return this.coordinate;

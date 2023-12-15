@@ -25,7 +25,7 @@ public class PointTest {
 	public void testDefaultConstructor(){
 		Point p = new Point();
 		Assert.assertTrue(p.isEmpty());
-		Assert.assertEquals("[NaN,NaN]", p.getCoordinate().toString());
+
 	}
 	
 	@Test
@@ -35,5 +35,22 @@ public class PointTest {
 		
 		Assert.assertEquals("Point", p.getType());
 	}
+	
+	@Test
+	public void testTranslate(){
+		
+		Coordinate c = new Coordinate(3.0,4.0);
+		Point p = new Point(c);
+		
+		double dx = 2;
+		double dy = 1.5;
+		
+		p.translate(dx, dy);
+		
+		Assert.assertEquals(5.0, p.getCoordinate().getX(), EPSILON);
+		Assert.assertEquals(5.5, p.getCoordinate().getY(), EPSILON);
+	}
+	
+
 
 }

@@ -26,6 +26,14 @@ public class LineString implements Geometry {
 		return this.points.isEmpty();
 	}
 	
+	@Override
+	public void translate(double dx, double dy) {
+		for (int i = 0; i < this.getNumPoints(); i++) {
+			this.getPointN(i).translate(dx, dy);
+		}
+		
+	}
+	
 	public int getNumPoints() {	
 		return this.points.size();
 	}
@@ -33,5 +41,7 @@ public class LineString implements Geometry {
 	public Point getPointN(int n) {
 		return this.points.get(n);
 	}
+
+	
 
 }
