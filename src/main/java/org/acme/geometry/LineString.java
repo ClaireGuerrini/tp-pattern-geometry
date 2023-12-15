@@ -27,11 +27,20 @@ public class LineString implements Geometry {
 	}
 	
 	@Override
-	public void translate(double dx, double dy) {
-		for (int i = 0; i < this.getNumPoints(); i++) {
-			this.getPointN(i).translate(dx, dy);
+	public void translate(double dx, double dy) {		
+		for (Point point : points) {
+			point.translate(dx, dy);
 		}
+	}
+	
+	@Override
+	public LineString clone(){
 		
+		List<Point> pointsCopy = new ArrayList<>();
+		for (Point point : points) {
+			pointsCopy.add(point.clone());
+		}
+		return new LineString(pointsCopy);
 	}
 	
 	public int getNumPoints() {	
