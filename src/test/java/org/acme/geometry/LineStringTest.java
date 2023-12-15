@@ -26,12 +26,19 @@ public class LineStringTest {
 		
 		LineString ls = new LineString(points);
 		
+		Assert.assertFalse(ls.isEmpty());
 		Assert.assertEquals(2,ls.getNumPoints());
 		Assert.assertEquals(p1,ls.getPointN(0));
 		Assert.assertEquals(p2,ls.getPointN(1));
 
 		
 		
+	}
+	
+	@Test
+	public void testDefaultConstructor(){
+		LineString ls = new LineString();
+		Assert.assertTrue(ls.isEmpty());
 	}
 	
 	@Test

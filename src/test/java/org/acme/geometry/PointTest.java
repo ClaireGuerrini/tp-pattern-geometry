@@ -14,10 +14,18 @@ public class PointTest {
 		Point p = new Point(c);
 		
 		Assert.assertEquals(c,p.getCoordinate());
+		Assert.assertFalse(p.isEmpty());
 		Assert.assertEquals(3.0, p.getCoordinate().getX(), EPSILON);
 		Assert.assertEquals(4.0, p.getCoordinate().getY(), EPSILON);
 		
 		
+	}
+	
+	@Test
+	public void testDefaultConstructor(){
+		Point p = new Point();
+		Assert.assertTrue(p.isEmpty());
+		Assert.assertEquals("[NaN,NaN]", p.getCoordinate().toString());
 	}
 	
 	@Test
