@@ -39,6 +39,7 @@ public class LineStringTest {
 	public void testDefaultConstructor(){
 		LineString ls = new LineString();
 		Assert.assertTrue(ls.isEmpty());
+		Assert.assertEquals(0,ls.getNumPoints());
 	}
 	
 	@Test
