@@ -15,6 +15,14 @@ public class LineString implements Geometry {
 		this.points = points != null ? points : new ArrayList<>();
 	}
 	
+	public int getNumPoints() {	
+		return this.points.size();
+	}
+	
+	public Point getPointN(int n) {
+		return this.points.get(n);
+	}
+	
 	@Override
 	public String getType() {
 		return "LineString";
@@ -42,12 +50,15 @@ public class LineString implements Geometry {
 		return new LineString(pointsCopy);
 	}
 	
-	public int getNumPoints() {	
-		return this.points.size();
-	}
-	
-	public Point getPointN(int n) {
-		return this.points.get(n);
+	@Override
+	public Envelope getEnvelope() {
+		EnvelopeBuilder builder = new EnvelopeBuilder();
+
+		for (Point point : points) {
+			builder.insert(point.getCoordinate());
+		}
+		return builder.build();
+		
 	}
 
 	

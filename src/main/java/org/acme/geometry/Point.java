@@ -13,6 +13,10 @@ public class Point implements Geometry {
 		this.coordinate = coordinate != null ? coordinate : new Coordinate();
 	}
 	
+	public Coordinate getCoordinate() {
+		return this.coordinate;
+	}
+	
 	@Override
 	public String getType() {
 		return "Point";
@@ -36,8 +40,13 @@ public class Point implements Geometry {
 		return new Point(coordinate);
 	}
 
-	public Coordinate getCoordinate() {
-		return this.coordinate;
+	
+	@Override
+	public Envelope getEnvelope() {
+		
+		EnvelopeBuilder builder = new EnvelopeBuilder();
+		builder.insert(coordinate);
+		return builder.build();
 	}
 
 	
