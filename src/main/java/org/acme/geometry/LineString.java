@@ -2,7 +2,6 @@ package org.acme.geometry;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class LineString implements Geometry {
 
@@ -14,6 +13,14 @@ public class LineString implements Geometry {
 	
 	public LineString(List<Point> points) {
 		this.points = points != null ? points : new ArrayList<>();
+	}
+	
+	public int getNumPoints() {	
+		return this.points.size();
+	}
+	
+	public Point getPointN(int n) {
+		return this.points.get(n);
 	}
 	
 	@Override
@@ -43,12 +50,15 @@ public class LineString implements Geometry {
 		return new LineString(pointsCopy);
 	}
 	
-	public int getNumPoints() {	
-		return this.points.size();
-	}
-	
-	public Point getPointN(int n) {
-		return this.points.get(n);
+	@Override
+	public Envelope getEnvelope() {
+		EnvelopeBuilder builder = new EnvelopeBuilder();
+
+		for (Point point : points) {
+			builder.insert(point.getCoordinate());
+		}
+		return builder.build();
+		
 	}
 
 	

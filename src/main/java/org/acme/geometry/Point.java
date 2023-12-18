@@ -1,6 +1,5 @@
 package org.acme.geometry;
 
-import java.util.Objects;
 
 public class Point implements Geometry {
 	
@@ -12,6 +11,10 @@ public class Point implements Geometry {
 	
 	public Point(Coordinate coordinate) {
 		this.coordinate = coordinate != null ? coordinate : new Coordinate();
+	}
+	
+	public Coordinate getCoordinate() {
+		return this.coordinate;
 	}
 	
 	@Override
@@ -37,8 +40,13 @@ public class Point implements Geometry {
 		return new Point(coordinate);
 	}
 
-	public Coordinate getCoordinate() {
-		return this.coordinate;
+	
+	@Override
+	public Envelope getEnvelope() {
+		
+		EnvelopeBuilder builder = new EnvelopeBuilder();
+		builder.insert(coordinate);
+		return builder.build();
 	}
 
 	

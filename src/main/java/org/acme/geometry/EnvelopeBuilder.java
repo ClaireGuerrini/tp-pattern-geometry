@@ -6,20 +6,22 @@ public class EnvelopeBuilder {
 	private Coordinate topRight;
 	
 	public EnvelopeBuilder(){
-		
+		this.bottomLeft = new Coordinate();
+		this.topRight = new Coordinate();
+
 	}
 	
 	public void insert(Coordinate coordinate) {
 		
-		if (this.bottomLeft.isEmpty() || this.topRight.isEmpty()) {
+		if (this.bottomLeft.isEmpty()) {
 			this.bottomLeft = coordinate;
 			this.topRight = coordinate;
 			
 		} else {
 			double xmin = this.bottomLeft.getX();
-			double ymin = this.bottomLeft.getX();
+			double ymin = this.bottomLeft.getY();
 			double xmax = this.topRight.getX();
-			double ymax = this.topRight.getX();
+			double ymax = this.topRight.getY();
 			
 			if (coordinate.getX() < xmin) {
 				xmin = coordinate.getX();

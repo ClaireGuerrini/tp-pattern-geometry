@@ -101,4 +101,18 @@ public class LineStringTest {
 		Assert.assertEquals(13.0, lsCopy.getPointN(0).getCoordinate().getX(), EPSILON);
 		Assert.assertEquals(16.0, lsCopy.getPointN(1).getCoordinate().getX(), EPSILON);
 	}
+	
+	@Test
+	public void testGetEnvelope(){
+		
+		LineString ls = SampleGeometryFactory.createLineString();
+		Envelope envelope = ls.getEnvelope();
+		
+		Assert.assertFalse(envelope.isEmpty());
+		Assert.assertEquals(0.0, envelope.getXmin(), EPSILON);
+		Assert.assertEquals(0.0, envelope.getYmin(), EPSILON);
+		Assert.assertEquals(3.0, envelope.getXmax(), EPSILON);
+		Assert.assertEquals(4.0, envelope.getYmax(), EPSILON);
+		
+	}
 }
