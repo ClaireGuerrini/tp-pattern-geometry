@@ -1,6 +1,5 @@
 package org.acme.geometry;
 
-import java.util.Objects;
 
 public class Point implements Geometry {
 	
